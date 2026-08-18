@@ -1,0 +1,27 @@
+# Maven
+target/
+*.class
+
+# IDE
+.idea/
+*.iml
+.vscode/
+.classpath
+.project
+.settings/
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
+
+# Log
+*.log
+
+# Configurazioni locali e segreti
+.env
+.env.*
+!.env.example
+
+# Stato locale degli agenti
+.agents/
+.codex/
