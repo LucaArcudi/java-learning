@@ -1,12 +1,16 @@
 # Review delle risposte finali
 
+## Esito finale
+
+Le tre risposte sono corrette. Le modifiche aggiunte chiariscono i due punti che
+richiedevano maggiore precisione.
+
 ## 1. Perché la modifica fatta tramite la variabile dell’operatore è visibile dalla variabile originale?
 
 ### Valutazione
 
-La risposta è corretta nel concetto. Va precisata soltanto la frase "reference della
-variabile": la variabile non ha una reference a sé stessa, ma contiene una reference
-all'oggetto.
+La correzione aggiunta individua il concetto giusto. La formulazione più semplice e
+precisa è: "la variabile contiene una reference all'oggetto".
 
 Con l'assegnazione:
 
@@ -27,10 +31,8 @@ variabili di raggiungere lo stesso oggetto.
 
 ### Valutazione
 
-La risposta è parzialmente corretta: riconosce che viene creata una nuova istanza,
-ma non spiega ancora perché la variabile originale non cambia. Inoltre, non è la
-nuova istanza ad avere "una sua reference": è il parametro locale a ricevere la
-reference al nuovo oggetto.
+La correzione è corretta: al parametro locale viene assegnata una nuova reference,
+mentre la variabile originale continua a indicare la bozza iniziale.
 
 Quando `draftOrder` viene passato al metodo, Java copia nel parametro il valore
 della sua reference. All'inizio la variabile del chiamante e il parametro del metodo
