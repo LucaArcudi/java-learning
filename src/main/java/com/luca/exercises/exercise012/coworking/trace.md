@@ -139,7 +139,7 @@ L'esercizio è superato quando:
 
 ## Domande finali
 
-Le domande non vengono definite nella traccia. Dopo che la tua implementazione avrà superato la code review, verranno formulate in un file `questions.md` posto accanto a `trace.md`, in modo che facciano riferimento alle scelte presenti davvero nel tuo codice. Eventuali scenari alternativi verranno indicati esplicitamente come ipotetici.
+Le domande non vengono definite nella traccia. Dopo la spiegazione della tua implementazione in `review.md`, verranno formulate in un file `questions.md` posto accanto a `trace.md`, in modo che facciano riferimento alle scelte presenti davvero nel tuo codice. Eventuali scenari alternativi verranno indicati esplicitamente come ipotetici.
 
 Scrivi le tue risposte in `solution/answers.md`. Le risposte AI verranno aggiunte soltanto alla chiusura dell'esercizio, nel file separato `aireview/answers.md`.
 
