@@ -2,19 +2,19 @@ package com.luca.exercises.exercise012.coworking.solution;
 
 abstract public class Prenotazione {
 
-    protected String codice;
-    protected String nomeCliente;
-    protected int numeroOre;
-    protected double tariffaOraria;
+    private String codice;
+    private String nomeCliente;
+    private int numeroOre;
+    private double tariffaOraria;
 
-    protected String operatore;
-    protected String nota;
-    protected boolean isConfirmed = false;
+    private String operatore;
+    private String nota;
+    private boolean isConfirmed = false;
 
-    protected Calcolatore calcolatore;
-    protected GeneratoreDesc generatoreDesc;
+    private Calcolatore calcolatore;
+    private GeneratoreDesc generatoreDesc;
 
-    protected static int contatorePre = 0;
+    private static int contatorePre = 0;
 
     protected Prenotazione(String codice, String nomeCliente, int numeroOre, double tariffaOraria,
             Calcolatore calcolatore, GeneratoreDesc generatoreDesc) {
@@ -54,4 +54,55 @@ abstract public class Prenotazione {
     protected String istruzioniAccesso(GeneratoreIstru gIs) {
         return gIs.generaIstruzioni();
     }
+
+    public String getCodice() {
+        return this.codice;
+    }
+
+    public String getNomeCliente() {
+        return this.nomeCliente;
+    }
+
+    public int getNumeroOre() {
+        return this.numeroOre;
+    }
+
+    public double getTariffaOraria() {
+        return this.tariffaOraria;
+    }
+
+    public String getOperatore() {
+        return this.operatore;
+    }
+
+    public String getNota() {
+        return this.nota;
+    }
+
+    public boolean getIsConfirmed() {
+        return this.isConfirmed;
+    }
+
+    public Calcolatore getCalcolatore() {
+        return this.calcolatore;
+    }
+
+    public GeneratoreDesc getGeneratoreDesc() {
+        return this.generatoreDesc;
+    }
+
+    public static int getContatorePre() {
+        return Prenotazione.contatorePre;
+    }
+
+    public abstract boolean getHasMonitor();
+
+    public abstract double getSuppl();
+
+    public abstract double getCostoFisso();
+
+    public abstract String istruzioniAccessoInd(GeneratoreIstru gIst, String message);
+
+    public abstract String istruzioniAccessoAu(GeneratoreIstru gIst, String message);
+
 }

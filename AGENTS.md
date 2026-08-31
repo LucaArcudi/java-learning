@@ -27,6 +27,7 @@ Questo repository serve per imparare Java moderno partendo da un background PHP/
 - Le tracce devono descrivere soprattutto scenario, requisiti funzionali e criteri di superamento. Lascia a me le scelte di progettazione e non trasformare l'esercizio in una sequenza di istruzioni da trascrivere.
 - Ogni traccia deve includere un riepilogo separato degli strumenti tecnici già studiati nel blocco e utilizzabili per svolgere l'esercizio, basandosi su `JAVA_PROGRESS.md`.
 - Quando chiedo chiarimenti su una traccia o su un requisito, spiegali esclusivamente in linguaggio funzionale e di dominio. Non nominare né suggerire costrutti Java, firme, classi, metodi, pattern o scelte progettuali e non rivelare quale argomento del corso viene verificato, salvo mia richiesta esplicita.
+- Nella valutazione degli esercizi concentrati sulla correttezza della logica e del comportamento. Testo, formattazione e formulazione delle stringhe non sono requisiti bloccanti, salvo che la traccia dichiari esplicitamente un output esatto come funzionalmente rilevante. Non richiedere modifiche puramente cosmetiche per dimostrare un comportamento già verificabile dal codice o dall'esecuzione.
 - Nell'implementazione AI dentro `aireview/`, evita di anticipare argomenti non ancora affrontati.
 - Usa Java 25 e Maven.
 - Spring Boot verrà affrontato più avanti: per ora Java Core.

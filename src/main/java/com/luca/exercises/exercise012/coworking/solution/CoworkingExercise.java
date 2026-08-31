@@ -75,40 +75,39 @@ public class CoworkingExercise {
         Calcolatore calcInd = new CalcolatoreIndividuale();
         GeneratoreDesc genInd = new GeneratoreInd();
 
-        PrenotazioneIndividuale preInd = new PrenotazioneIndividuale(
+        Prenotazione preInd = new PrenotazioneIndividuale(
                 "COD/I/1",
                 "Paolo",
                 4,
                 4.5,
                 calcInd,
-                genInd,
-                false);
+                genInd);
 
         double totaleInd = 0.0;
 
-        if (preInd.hasMonitor) {
-            totaleInd = preInd.calcolatore.calcolaTotale(preInd.numeroOre, preInd.tariffaOraria, 0,
-                    preInd.suppl);
+        if (preInd.getHasMonitor()) {
+            totaleInd = preInd.getCalcolatore().calcolaTotale(preInd.getNumeroOre(), preInd.getTariffaOraria(), 0,
+                    preInd.getSuppl());
         } else {
-            totaleInd = preInd.calcolatore.calcolaTotale(preInd.numeroOre, preInd.tariffaOraria, 0,
+            totaleInd = preInd.getCalcolatore().calcolaTotale(preInd.getNumeroOre(), preInd.getTariffaOraria(), 0,
                     0);
         }
 
-        String descInd = preInd.generatoreDesc.generaDescrizione("descrizione prenotazione individuale");
+        String descInd = preInd.getGeneratoreDesc().generaDescrizione("descrizione prenotazione individuale");
 
         preInd.conferma("Operatore 1");
 
         System.out.println(totaleInd);
         System.out.println(descInd);
-        System.out.println(preInd.operatore);
-        System.out.println(preInd.nota);
-        System.out.println(preInd.isConfirmed);
+        System.out.println(preInd.getOperatore());
+        System.out.println(preInd.getNota());
+        System.out.println(preInd.getIsConfirmed());
 
-        if (preInd.isConfirmed) {
+        if (preInd.getIsConfirmed()) {
 
             GeneratoreIstru gIstruInd = new GeneratoreIstruInd();
 
-            String istruzioni = preInd.istruzioniAccesso(gIstruInd);
+            String istruzioni = preInd.istruzioniAccessoInd(gIstruInd, "Accesso individuale:");
 
             System.out.println(istruzioni);
 
@@ -119,7 +118,7 @@ public class CoworkingExercise {
         Calcolatore calcAu = new CalcolatoreAula();
         GeneratoreDesc genAu = new GeneratoreAu();
 
-        PrenotazioneAula preAu = new PrenotazioneAula(
+        Prenotazione preAu = new PrenotazioneAula(
                 "COD/A/1",
                 "Marco",
                 2,
@@ -128,23 +127,31 @@ public class CoworkingExercise {
                 genAu,
                 5);
 
-        double totaleAu = preAu.calcolatore.calcolaTotale(preAu.numeroOre, preAu.tariffaOraria, preAu.costoFisso, 0);
+        double totaleAu = preAu.getCalcolatore().calcolaTotale(preAu.getNumeroOre(), preAu.getTariffaOraria(),
+                preAu.getCostoFisso(),
+                0);
 
-        String descAu = preAu.generatoreDesc.generaDescrizione("descrizione prenotazione aula");
+        String descAu = preAu.getGeneratoreDesc().generaDescrizione("descrizione prenotazione aula");
 
         preAu.conferma("Operatore 2", "Overload conferma");
 
         System.out.println(totaleAu);
         System.out.println(descAu);
-        System.out.println(preAu.operatore);
-        System.out.println(preAu.nota);
-        System.out.println(preAu.isConfirmed);
+        System.out.println(preAu.getOperatore());
+        System.out.println(preAu.getNota());
+        System.out.println(preAu.getIsConfirmed());
 
-        if (preAu.isConfirmed) {
+        if (preAu.getIsConfirmed()) {
 
-            GeneratoreIstru gIstruAu = new GeneratoreIstruAu();
+            GeneratoreIstruAu gIstruAu = new GeneratoreIstruAu();
 
-            String istruzioni = preAu.istruzioniAccesso(gIstruAu);
+            String istruzioni = "";
+
+            istruzioni = preAu.istruzioniAccessoAu(gIstruAu, "Accesso aula:");
+
+            if (gIstruAu.isAvailable()) {
+                istruzioni = "Servizio digitale disponibile per accesso aula, ecco il tuo codice di accesso: 0321432490";
+            }
 
             System.out.println(istruzioni);
 
@@ -152,7 +159,7 @@ public class CoworkingExercise {
 
         System.out.println("------------------------------------------------------------");
 
-        System.out.println(Prenotazione.contatorePre);
+        System.out.println(Prenotazione.getContatorePre());
 
     }
 }
