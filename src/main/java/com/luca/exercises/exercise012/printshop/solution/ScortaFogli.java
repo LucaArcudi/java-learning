@@ -4,11 +4,30 @@ public class ScortaFogli {
 
     private static int disponibilita;
 
-    private static void aggiungiFogli() {
+    public static boolean aggiungiFogli(int q) {
+        if (q > 0) {
+            disponibilita = disponibilita + q;
+            return true;
+        }
+        return false;
+    }
 
-    };
+    public static boolean disponibilitaSuff(int q) {
+        if (disponibilita - q >= 0) {
+            return true;
+        }
+        return false;
+    }
 
-    private static void rimuoviFogli() {
+    public static boolean rimuoviFogli(int q) {
+        if (disponibilitaSuff(q)) {
+            disponibilita = disponibilita - q;
+            return true;
+        }
+        return false;
+    }
 
-    };
+    public static int getDisponibilita() {
+        return disponibilita;
+    }
 }

@@ -3,7 +3,7 @@
 ## 1. Java moderno — linguaggio principale
 
 - [x] Type system: primitive, reference types, null, var, conversioni e pass-by-value.
-- [ ] Classi, interfacce, abstract class, composizione, ereditarietà e polimorfismo.
+- [x] Classi, interfacce, abstract class, composizione, ereditarietà e polimorfismo.
 - [ ] Immutabilità, enum, record, sealed classes e pattern matching essenziale.
 - [ ] `equals()`, `hashCode()`, `toString()` e identità degli oggetti.
 - [ ] Collections: `List`, `Set`, `Map` e principali implementazioni.

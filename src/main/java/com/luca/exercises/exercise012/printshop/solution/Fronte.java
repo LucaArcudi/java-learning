@@ -6,7 +6,11 @@ public class Fronte implements ModalitaStampa {
         return 10;
     }
 
-    public int determinaConsumoFogli() {
-        return 1;
+    public int determinaConsumoFogli(int nPagine) {
+        return (int) nPagine;
+    };
+
+    public int determinaCostoStampa(int nPagine) {
+        return this.determinaConsumoFogli(nPagine) * this.determinaPrezzoFoglio();
     };
 }

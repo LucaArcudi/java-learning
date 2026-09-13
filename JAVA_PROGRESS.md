@@ -89,4 +89,12 @@
 - Uso combinato di composizione e interfacce per dipendere da collaboratori sostituibili.
 - Preferenza per un contratto o per la composizione quando l'ereditarietà servirebbe soltanto a riutilizzare codice senza una reale relazione `is-a`.
 
+#### Consolidamento OOD
+
+- Esercizio `exercise012/printshop` concluso: progettazione e implementazione autonome, verifica della logica e versione di confronto disponibile in `aireview/`.
+- Ordine delle operazioni che coinvolgono più oggetti: verificare i possibili rifiuti prima delle modifiche, entro i confini di una simulazione sequenziale.
+- Protezione delle transizioni di stato, consumo delle risorse una sola volta e rifiuto delle operazioni ripetute senza effetti indesiderati.
+- Confronto tra contenuto delle stringhe con `.equals()` e identità degli oggetti con `==`.
+- Blocco 1.2 completato. Il prossimo punto della roadmap è immutabilità, enum, record, sealed classes e pattern matching essenziale.
+
 ## 2. Tooling Java, build e qualità del codice

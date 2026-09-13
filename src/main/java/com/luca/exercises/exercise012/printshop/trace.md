@@ -83,7 +83,7 @@ Puoi organizzare prove indipendenti oppure una sequenza, indicando chiaramente l
 | Annullamento prima dell'avvio | Riesce senza consumo di risorse; ulteriori annullamenti, avvii o cambi di modalità sono rifiutati. |
 | Operazioni incompatibili con la fase corrente | Completare una commessa mai avviata, annullarne una in stampa e cambiare modalità dopo l'avvio sono rifiutati senza effetti. Una commessa completata non può essere riavviata, annullata o modificata. |
 
-Nel punto di ingresso mostra esiti, quantità e stati sufficienti a verificare questi casi. Valutiamo la logica: non c'è un formato o testo di output obbligatorio.
+I casi possono essere verificati nel punto di ingresso oppure con prove separate sui metodi: non serve completarli tutti nel `main`. Valutiamo la logica: non c'è un formato o testo di output obbligatorio.
 
 ## Obiettivi tecnici e criteri di progettazione
 
@@ -119,10 +119,9 @@ con package `com.luca.exercises.exercise012.printshop.solution` e un punto di in
 
 L'esercizio è concluso quando:
 
-1. `mvn compile` riesce con Java 25 e l'esecuzione verifica i casi indicati;
-2. comportamento e organizzazione rispettano i requisiti e i confini della traccia;
-3. abbiamo discusso la spiegazione del tuo codice in `review.md` e le tue risposte alle successive domande in `questions.md` sono state approvate.
+1. `mvn compile` riesce con Java 25 e le verifiche sui metodi o sul programma coprono i casi indicati;
+2. comportamento e organizzazione rispettano i requisiti e i confini della traccia.
 
-Le domande finali verranno formulate dopo la spiegazione e saranno basate sulla tua implementazione. Le tue risposte andranno in `solution/answers.md`; alla chiusura, implementazione e risposte AI andranno in `aireview/`.
+Quando dichiari finito l'esercizio, l'AI verifica il codice e prepara direttamente una versione di confronto in `aireview/`, senza modificare la tua soluzione. Il confronto sulle due implementazioni e gli eventuali approfondimenti avvengono su tua richiesta, senza ulteriori passaggi obbligatori.
 
 Non sono richieste estensioni facoltative. Questa traccia fissa il perimetro della valutazione.

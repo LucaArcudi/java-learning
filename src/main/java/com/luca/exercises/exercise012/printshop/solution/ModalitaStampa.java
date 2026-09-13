@@ -4,6 +4,8 @@ public interface ModalitaStampa {
 
     public int determinaPrezzoFoglio();
 
-    public int determinaConsumoFogli();
+    public int determinaConsumoFogli(int nPagine);
+
+    public int determinaCostoStampa(int nPagine);
 
 }

@@ -8,8 +8,7 @@ public class Commessa {
     private int nCopieDocumento;
     private ModalitaStampa modalitaStampa;
     private int prezzoTotaleCentesimi;
-    private int fogliNecessari;
-    private Stampante stampanteCompletamento;
+    private Stampante stampanteInUso;
 
     public Commessa(String codice, String nomeCliente, int nPagineDocumento, int nCopieDocumento,
             ModalitaStampa modalitaStampa) {
@@ -23,23 +22,67 @@ public class Commessa {
     }
 
     public String consultaPrentivo() {
-        return " ";
+        return "Prezzo totale: "
+                + this.modalitaStampa.determinaCostoStampa(this.nPagineDocumento) * this.nCopieDocumento + "\n"
+                + "Fogli necessari: "
+                + this.modalitaStampa.determinaConsumoFogli(this.nPagineDocumento) * this.nCopieDocumento;
+    }
+
+    public int getFogliNecessari() {
+        return this.modalitaStampa.determinaConsumoFogli(this.nPagineDocumento) * this.nCopieDocumento;
+    }
+
+    public int getPrezzoTotale() {
+        return this.modalitaStampa.determinaCostoStampa(this.nPagineDocumento) * this.nCopieDocumento;
+    }
+
+    public String getCodice() {
+        return this.codice;
     }
 
     public void cambiaModalitaStampa(ModalitaStampa modalitaStampa) {
-        this.modalitaStampa = modalitaStampa;
+        if (this.stato.equals("Da avviare")) {
+            this.modalitaStampa = modalitaStampa;
+        }
     }
 
-    public void avvia() {
-
+    public boolean canAvvia() {
+        if (this.stato.equals("Da avviare")) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
-    public void riavvia() {
-
+    public boolean avvia(Stampante stampante) {
+        if (this.canAvvia() && stampante.canStampa() && ScortaFogli.disponibilitaSuff(this.getFogliNecessari())) {
+            this.stato = "In stampa";
+            this.prezzoTotaleCentesimi = this.getPrezzoTotale();
+            ScortaFogli.rimuoviFogli(this.getFogliNecessari());
+            stampante.stampa(this);
+            this.stampanteInUso = stampante;
+            return true;
+        }
+        return false;
     }
 
-    public void completa() {
+    public boolean completa() {
+        if (this.stato.equals("In stampa")) {
+            this.stato = "Completata";
+            this.stampanteInUso.liberaStampante();
+            this.stampanteInUso = null;
+            return true;
+        }
+        return false;
+    }
 
+    public boolean annulla() {
+        if (this.stato.equals("Da avviare")) {
+            this.stato = "Annullata";
+            return true;
+        } else {
+            return false;
+        }
     }
 
 }
