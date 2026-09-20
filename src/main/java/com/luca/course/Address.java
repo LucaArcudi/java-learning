@@ -1,13 +1,16 @@
 package com.luca.course;
 
-public class Address {
+public record Address(String city, String country) {
 
-    private String city;
-    private String country;
+    public Address {
+        city = city.trim();
+        country = country.trim();
+    }
 
-    public Address(String city, String country) {
-        this.city = city;
-        this.country = country;
+    public Address withCity(String newCity) {
+
+        Address newAddress = new Address(newCity, this.country);
+        return newAddress;
     }
 
     public String format() {

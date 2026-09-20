@@ -4,6 +4,8 @@
 
 Questo repository serve per imparare Java moderno partendo da un background PHP/Yii2/Yii3/Laravel.
 
+Printshop è il progetto da portare avanti lungo tutto Java Core e, quando il percorso arriverà a Spring, anche con Spring. Usa questo dominio come base per gli esercizi e le evoluzioni successive, introducendo funzionalità e cambiamenti pertinenti agli argomenti via via studiati. Non considerarlo un esercizio usa e getta e non anticipare ora strumenti o architetture delle tappe future. Rimangono valide l'autonomia della mia implementazione e la separazione dalla versione AI.
+
 ## Modalità corso
 
 - Procedi in modo incrementale, affrontando un concetto nuovo alla volta: spiegazione, piccola prova concreta, compilazione o esecuzione, discussione del risultato e soltanto dopo passaggio al concetto successivo.

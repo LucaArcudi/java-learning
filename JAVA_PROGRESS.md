@@ -91,10 +91,63 @@
 
 #### Consolidamento OOD
 
-- Esercizio `exercise012/printshop` concluso: progettazione e implementazione autonome, verifica della logica e versione di confronto disponibile in `aireview/`.
 - Ordine delle operazioni che coinvolgono più oggetti: verificare i possibili rifiuti prima delle modifiche, entro i confini di una simulazione sequenziale.
 - Protezione delle transizioni di stato, consumo delle risorse una sola volta e rifiuto delle operazioni ripetute senza effetti indesiderati.
 - Confronto tra contenuto delle stringhe con `.equals()` e identità degli oggetti con `==`.
-- Blocco 1.2 completato. Il prossimo punto della roadmap è immutabilità, enum, record, sealed classes e pattern matching essenziale.
+
+### 3. Immutabilità, enum, record, sealed classes e pattern matching essenziale — in corso.
+
+- `final` sulle variabili locali: una volta inizializzate non possono essere riassegnate.
+- Distinzione tra dichiarazione e riassegnazione di una variabile locale; divieto di doppia dichiarazione nello stesso blocco, indipendentemente da `final`.
+- Distinzione tra reference non riassegnabile e oggetto immutabile: `final` sulla variabile non impedisce di invocare operazioni che modificano l'oggetto.
+- Campi d'istanza `final`: inizializzazione nel costruttore e divieto di successive riassegnazioni nei metodi.
+- Differenza tra `private`, che limita l'accesso al campo, e `final`, che ne impedisce la riassegnazione dopo l'inizializzazione.
+- Classi dichiarate `final`: divieto di ereditarietà; `final` sulla classe non rende automaticamente immutabili i suoi oggetti.
+- Struttura di una semplice classe immutabile: classe `final`, campi `private final` di tipo immutabile inizializzati nel costruttore e assenza di operazioni che modifichino lo stato.
+- Operazioni su oggetti immutabili che restituiscono una nuova istanza con alcuni dati diversi, lasciando invariato l'oggetto originale.
+- Distinzione tra creazione di un nuovo valore e modifica di un oggetto esistente; verifica dell'identità delle istanze tramite `==`.
+- Limite dei campi `private final` che contengono reference a oggetti mutabili: modifiche tramite reference esterne condivise possono cambiare i dati osservabili dall'oggetto contenitore, anche se la sua classe è `final` e non offre operazioni di modifica.
+- Creazione di uno snapshot conservando un valore immutabile letto nel costruttore, anziché mantenere una reference all'oggetto mutabile di origine.
+- Indipendenza tra tipo del parametro del costruttore e tipo del campo: il costruttore può estrarre e conservare soltanto i dati necessari.
+- Copia difensiva nel costruttore: conservare un oggetto distinto da quello mutabile ricevuto per impedire modifiche indirette tramite la reference originale.
+- Copia difensiva nei getter: restituire una copia di un oggetto interno mutabile per non esporre lo stato del contenitore a modifiche esterne.
+- Distinzione tra copia della reference e creazione di un oggetto indipendente con gli stessi dati; un contenitore può essere immutabile pur usando internamente oggetti mutabili, se non li modifica e non ne condivide le reference con l'esterno.
+- Dichiarazione di un `enum` per rappresentare un insieme predefinito di alternative e uso delle sue costanti attraverso il tipo dichiarato.
+- Differenza tra una costante enum e una stringa: il tipo enum impedisce di assegnare testi arbitrari come valori.
+- Confronto delle costanti dello stesso enum tramite `==`, grazie all'identità unica di ciascuna costante.
+- Distinzione tra stati rappresentabili da un enum e regole di dominio sulle transizioni tra stati, che non vengono applicate automaticamente dall'enum.
+- Campi d'istanza e metodi negli enum per associare dati alle singole costanti e consultarli.
+- Costruttore privato di un enum e argomenti forniti nella dichiarazione delle costanti; impossibilità di creare ulteriori istanze tramite `new`.
+- Ordine degli elementi nel corpo di un enum: costanti prima di campi, costruttori e metodi, con `;` a separare l'elenco dei valori dai membri successivi.
+- Metodi d'istanza negli enum che esprimono regole basate sulla costante corrente e su una destinazione ricevuta come parametro.
+- Uso di `this` negli enum per riferirsi alla costante su cui è chiamato il metodo.
+- Verifica delle transizioni tra stati separata dalla loro applicazione e dai controlli sulle altre risorse del dominio.
+- Dichiarazione di un `record` e dei suoi componenti per rappresentare una classe centrata sui dati.
+- Generazione automatica dei campi `private final`, del costruttore canonico e degli accessori con il nome dei componenti, senza prefisso `get`.
+- Record implicitamente `final` e possibilità di dichiarare metodi d'istanza aggiuntivi.
+- Immutabilità superficiale dei record: i componenti non sono riassegnabili, ma eventuali oggetti mutabili contenuti non vengono automaticamente copiati o resi immutabili.
+- `equals()` generato automaticamente nei record: confronto tra istanze dello stesso tipo in base ai componenti; confronto per contenuto per i componenti `String`.
+- Distinzione tra identità tramite `==` e uguaglianza di valore tramite `equals()` per due record con gli stessi dati; differenza rispetto a una classe ordinaria senza override di `equals()`.
+- Costruttore compatto dei record: parametri impliciti corrispondenti ai componenti e assegnazione automatica ai campi al termine del corpo.
+- Normalizzazione dei parametri nel costruttore compatto prima della memorizzazione, senza assegnare direttamente i campi `final`.
+- Uso di `String.trim()` per rimuovere gli spazi iniziali e finali dai dati ricevuti.
+- Interfacce `sealed` e clausola `permits` per limitare i sottotipi diretti ammessi.
+- Record che implementano un'interfaccia `sealed`: i record sono implicitamente `final` e chiudono i rispettivi rami della gerarchia.
+- Rappresentazione di esiti alternativi con dati differenti mediante record distinti e un tipo comune; uso polimorfico del comportamento dichiarato nell'interfaccia.
+- Distinzione tra le costanti predefinite di un enum e i tipi ammessi da una gerarchia `sealed`, dei quali si possono creare molte istanze con dati diversi.
+- Pattern matching con `instanceof`: verifica del tipo reale e introduzione di una variabile del tipo riconosciuto, senza cast esplicito.
+- La variabile introdotta dal pattern si riferisce allo stesso oggetto, senza crearne uno nuovo né cambiare il tipo dichiarato della variabile originale.
+- Accesso ai dati specifici dei sottotipi attraverso le variabili del pattern nei rispettivi rami `if` / `else if`.
+- Confronto con la forma tradizionale: controllo tramite `instanceof` seguito da cast esplicito a un tipo più specifico.
+- Flow scoping delle variabili di pattern: disponibilità nei punti in cui il flusso garantisce che il riconoscimento sia riuscito.
+- Pattern negato con uscita anticipata dal metodo e uso della variabile riconosciuta dopo il blocco `if`.
+- Uso della variabile del pattern nella parte destra di `&&`, grazie alla valutazione condizionale del secondo operando.
+- Pattern matching nello `switch` tramite casi per tipo e variabili disponibili nel rispettivo ramo.
+- `switch` come espressione che produce un valore, restituito dal metodo tramite `return`; rami con `->` senza passaggio al caso successivo.
+- Copertura esaustiva dei sottotipi di una gerarchia `sealed`, che permette di omettere `default` quando tutti i casi sono gestiti.
+- Condizioni aggiuntive con `when` e ordine dei casi: caso condizionato prima del caso generale dello stesso tipo.
+- Gestione esplicita di `null` nello `switch` tramite `case null`, distinta dal normale `default`.
+- Record patterns per riconoscere un record ed estrarne direttamente i componenti, senza creare un nuovo oggetto.
+- Associazione dei componenti nei record patterns secondo l'ordine della dichiarazione del record, non secondo i nomi scelti per le variabili.
 
 ## 2. Tooling Java, build e qualità del codice

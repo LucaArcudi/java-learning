@@ -1,6 +1,7 @@
 package com.luca.course;
 
 public class Customer extends Person {
+
     private String customerCode;
 
     public Customer(String name, String surname, String customerCode) {
