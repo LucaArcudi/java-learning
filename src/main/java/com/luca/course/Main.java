@@ -90,9 +90,9 @@ public class Main {
                 Address address5 = new Address("Roma", "Italia");
                 Address address6 = new Address("Milano", "Italia");
 
-                System.out.println(address1 == address2);
-                System.out.println(address1.equals(address2));
-                System.out.println(address1.equals(address3));
+                System.out.println(address4 == address5);
+                System.out.println(address4.equals(address5));
+                System.out.println(address4.equals(address6));
 
                 System.out.println("--------------------------------");
 
